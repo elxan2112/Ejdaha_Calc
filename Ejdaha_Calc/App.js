@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet, View, Text, TouchableOpacity,} from 'react-native';
+import { SafeAreaView,  View, Text, TouchableOpacity,} from 'react-native';
+import {styles} from './myStyles';
 
 class App extends Component{
   constructor(){
@@ -11,7 +12,7 @@ class App extends Component{
   }
 
   numsPressed(text){
-    console.log(text)
+    //console.log(text)
     if (text === "="){
       if(this.state.resultText === '+' || this.state.resultText === "" || this.state.tempText === "" || this.state.resultText === '-' || this.state.resultText === '*' || this.state.resultText === '/' || this.state.resultText === '+.' || this.state.resultText === '-.' || this.state.resultText === '*.' || this.state.resultText === '/.'){}
       else if (!this.state.resultText.includes('+') && !this.state.resultText.includes('-') && !this.state.resultText.includes('*') && !this.state.resultText.includes('/')){}
@@ -90,7 +91,7 @@ class App extends Component{
   }
 
   upperOperatorPressed(operator){
-    console.log(operator)
+    //console.log(operator)
     switch(operator){
       case 'C':
         this.setState({
@@ -115,10 +116,10 @@ class App extends Component{
             tempText: '',
             resultText: ''
           })
-          console.log('this.state.tempText,',this.state.tempText)
+          //console.log('this.state.tempText,',this.state.tempText)
         }
         else{
-          console.log('this.state.tempText,else',this.state.resultText)
+          //console.log('this.state.tempText,else',this.state.resultText)
           this.setState({resultText: this.state.resultText.toString().slice(0, -1)})}
         break;
     }
@@ -130,9 +131,6 @@ class App extends Component{
       case '*':
       case '/':
         if (this.state.resultText === '+' || this.state.resultText === '-' || this.state.resultText === '*' || this.state.resultText === '/' || this.state.resultText === '' && this.state.tempText === ''){}
-        else if (this.state.tempText !== ''){
-          if (!this.state.resultText.includes('+') || !this.state.resultText.includes('-') || !this.state.resultText.includes('*') || !this.state.resultText.includes('/')){}
-        }
         else if(this.state.tempText !== '' || this.state.resultText !==''){
           if (this.state.resultText === '/0'){
             this.setState({
@@ -150,9 +148,9 @@ class App extends Component{
         break;
       case '-':
         if (this.state.resultText === '+' || this.state.resultText === '-' || this.state.resultText === '*' || this.state.resultText === '/'){}
-        else if (this.state.tempText !== ''){
-          if (!this.state.resultText.includes('+') || !this.state.resultText.includes('-') || !this.state.resultText.includes('*') || !this.state.resultText.includes('/')){}
-        }
+        // else if (this.state.tempText !== ''){
+        //   if (!this.state.resultText.includes('+') || !this.state.resultText.includes('-') || !this.state.resultText.includes('*') || !this.state.resultText.includes('/')){}
+        // }
         else {
           if (this.state.resultText === '/0'){
             this.setState({
@@ -185,6 +183,7 @@ class App extends Component{
   numbersBtn = this.numbers.map(i => {return <TouchableOpacity onPress={()=> this.numsPressed(i)} style={styles.numsButtonRow}>
     <Text style={styles.numsButtonText}>{i}</Text>
   </TouchableOpacity>});
+  
   render(){
 
 
@@ -214,73 +213,6 @@ class App extends Component{
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  temp: {
-    flex: 1,
-    backgroundColor: '#f4f1e8',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
-  },
-  tempText: {
-    fontSize: 25,
-    color: '#ab9f68',
-  },
-  operations: {
-    flex: 1.3,
-    backgroundColor: '#f4f1e8',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-  },
-  operationsText: {
-    fontSize: 35,
-    color: '#ab9f68',
-  },
-  upperOperators: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#ab9f68',
-  },
-  buttons: {
-    flex: 4,
-    flexDirection: 'row',
-  },
-  operatorsButtonText: {
-    fontSize: 40,
-    color :'#f4f1e8',
-  },
-  allButtons:{
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'stretch',
-  },
-  numsButton: {
-    flex: 3,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f4f1e8',
-  },
-  numsButtonRow:{
-    width: '30%',
-    height: '25%'
-  },
-  numsButtonText: {
-    fontSize: 50,
-    alignSelf: 'center',
-    justifyContent: 'space-around',
-    color: '#ab9f68',
-  },
-  operatorsButton:{
-    flex: 1,
-    backgroundColor: '#ab9f68',
-    justifyContent: 'space-around',
-    alignItems: 'stretch',
-  },
-})
+
 
 export default App;
