@@ -170,17 +170,17 @@ class App extends Component{
   }
 
   upperOperations = ["CE", "C", '<-'];
-  upperOperationBtn = this.upperOperations.map(i => {return <TouchableOpacity onPress={()=> this.upperOperatorPressed(i)} style={styles.allButtons}>
+  upperOperationBtn = this.upperOperations.map((i, index) => {return <TouchableOpacity key={index} onPress={()=> this.upperOperatorPressed(i)} style={styles.allButtons}>
     <Text style={styles.operatorsButtonText}>{i}</Text>
   </TouchableOpacity>})
 
   operation =["/", "*", "-", "+"];
-  operationBtn = this.operation.map(i => {return <TouchableOpacity onPress={()=> this.operatorPressed(i)} style={styles.allButtons}>
+  operationBtn = this.operation.map((i, index) => {return <TouchableOpacity key={index} onPress={()=> this.operatorPressed(i)} style={styles.allButtons}>
     <Text style={styles.operatorsButtonText}>{i}</Text>
   </TouchableOpacity>});
 
   numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3, '.', 0, '='];
-  numbersBtn = this.numbers.map(i => {return <TouchableOpacity onPress={()=> this.numsPressed(i)} style={styles.numsButtonRow}>
+  numbersBtn = this.numbers.map((i, index) => {return <TouchableOpacity key={index} onPress={()=> this.numsPressed(i)} style={styles.numsButtonRow}>
     <Text style={styles.numsButtonText}>{i}</Text>
   </TouchableOpacity>});
   
